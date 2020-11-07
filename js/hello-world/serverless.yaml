@@ -1,0 +1,10 @@
+service: HelloWorldJs
+
+provider:
+  name: aws
+  region: eu-west-2
+  runtime: nodejs12.x
+
+functions:
+  hello:
+    handler: handler.hello

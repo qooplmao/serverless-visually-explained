@@ -1,0 +1,15 @@
+service: HelloWorldPhp
+
+provider:
+  name: aws
+  region: eu-west-2
+  runtime: provided
+
+functions:
+  hello:
+    handler: handler.php
+    layers:
+      - ${bref:layer.php-74}
+
+plugins:
+  - ./vendor/bref/bref

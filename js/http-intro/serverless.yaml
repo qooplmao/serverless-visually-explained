@@ -1,0 +1,13 @@
+service: HttoIntroJs
+
+provider:
+  name: aws
+  region: eu-west-2
+  runtime: nodejs12.x
+
+functions:
+  httpIntro:
+    handler: handler.httpIntro
+    events:
+      - httpApi:
+          - '*'

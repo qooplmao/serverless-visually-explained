@@ -1,0 +1,13 @@
+service: HttoIntroPython
+
+provider:
+  name: aws
+  region: eu-west-2
+  runtime: python3.8
+
+functions:
+  httpIntro:
+    handler: handler.httpIntro
+    events:
+      - httpApi:
+          - '*'

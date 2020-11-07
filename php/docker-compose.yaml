@@ -6,7 +6,7 @@ services:
     ports:
       - '8000:80'
     volumes:
-      - ./http-intro:/var/task
+      - ./${PROJECT}:/var/task
     depends_on:
       - php
     environment:
@@ -17,4 +17,4 @@ services:
       dockerfile: Dockerfile-php
       context: .
     volumes:
-      - ./http-intro:/var/task
+      - ./${PROJECT}:/var/task

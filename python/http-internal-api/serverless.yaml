@@ -1,0 +1,22 @@
+service: HttpInternalApiPython
+
+provider:
+  name: aws
+  region: eu-west-2
+  runtime: python3.8
+  iamRoleStatements:
+    - Effect: Allow
+      Action: lambda:InvokeFunction
+      Resource: 'arn:aws:lambda:eu-west-2:*:function:${self:service}-${self:provider.stage}-internalApi'
+
+functions:
+  externalApi:
+    handler: handler-external.handler
+    events:
+      - httpApi:
+          path: /
+          method: GET
+
+  internalApi:
+    handler: handler-internal.handler
+

@@ -1,21 +1,28 @@
-service: httpInternalApiJs
+service: HttpInternalApiPhp
 
 provider:
   name: aws
   region: eu-west-2
-  runtime: nodejs12.x
+  runtime: provided
   iamRoleStatements:
-      - Effect: Allow
-        Action: lambda:InvokeFunction
-        Resource: 'arn:aws:lambda:eu-west-2:*:function:${self:service}-${self:provider.stage}-internalApi'
+    - Effect: Allow
+      Action: lambda:InvokeFunction
+      Resource: 'arn:aws:lambda:eu-west-2:*:function:${self:service}-${self:provider.stage}-internalApi'
 
 functions:
   externalApi:
-    handler: handler-external.handler
+    handler: handler-external.php
+    layers:
+      - ${bref:layer.php-74}
     events:
       - httpApi:
           path: /
           method: GET
 
   internalApi:
-    handler: handler-internal.handler
+    handler: handler-internal.php
+    layers:
+      - ${bref:layer.php-74}
+
+plugins:
+  - ./vendor/bref/bref

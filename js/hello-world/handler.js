@@ -1,4 +1,2 @@
-exports.hello = async function(event, context) {
-  return 'Hello World';
-}
+exports.hello = async () => 'Hello World';
 

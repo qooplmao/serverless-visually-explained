@@ -1,4 +1,4 @@
-exports.httpIntro = async function (event, context) {
+exports.httpIntro = async event => {
   let body = 'Hello World';
 
   if (event.queryStringParameters && event.queryStringParameters.name) {

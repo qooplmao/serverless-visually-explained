@@ -1,0 +1,10 @@
+service: HelloWorldGo
+
+provider:
+  name: aws
+  region: eu-west-2
+  runtime: go1.x
+
+functions:
+  hello:
+    handler: bin/hello

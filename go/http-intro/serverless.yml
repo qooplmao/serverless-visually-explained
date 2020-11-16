@@ -1,0 +1,15 @@
+service: HttpIntroGo
+
+provider:
+  name: aws
+  region: eu-west-2
+  runtime: go1.x
+
+functions:
+  httpIntro:
+    handler: bin/http-intro
+    events:
+      - httpApi:
+          path: /
+          method: GET
+
